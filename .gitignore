@@ -38,3 +38,6 @@ ENV/
 
 # その他
 *.bak
+
+# webappフォルダ
+webapp/
