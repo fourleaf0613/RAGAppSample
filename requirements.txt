@@ -1,0 +1,14 @@
+openai==1.56.0
+tiktoken==0.6.0
+requests==2.31.0
+azure-search-documents==11.6.0b4
+azure-ai-documentintelligence==1.0.0b1
+streamlit==1.38.0
+azure-identity==1.19.0
+azure-cosmos==4.7.0
+azure-storage-blob==12.17.0
+python-dotenv==1.0.1
+jsonlines==4.0.0
+matplotlib==3.9.2
+seaborn==0.13.2
+azure-ai-evaluation==1.0.0b4

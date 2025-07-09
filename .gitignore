@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Jupyter Notebook
+*.ipynb_checkpoints
+
+# 環境ファイル
+.env
+.env.*
+
+# VSCode
+.vscode/
+
+# OSごとの不要ファイル
+.DS_Store
+Thumbs.db
+
+# ログや一時ファイル
+*.log
+*.tmp
+*.temp
+
+# Python仮想環境
+venv/
+env/
+.venv/
+ENV/
+
+# Streamlitキャッシュ
+.streamlit/
+
+# Azure関連の一時ファイル
+*.azure/
+
+# その他
+*.bak

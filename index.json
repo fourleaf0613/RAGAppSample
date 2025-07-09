@@ -1,0 +1,127 @@
+{
+    "fields": [
+        {
+            "name": "id",
+            "type": "Edm.String",
+            "key": true,
+            "searchable": true,
+            "filterable": false,
+            "sortable": false,
+            "facetable": false,
+            "analyzer": "keyword"
+        },
+        {
+            "name": "fileName",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": true,
+            "sortable": false,
+            "facetable": true
+        },
+        {
+            "name": "chunkNo",
+            "type": "Edm.Int32",
+            "searchable": false,
+            "filterable": true,
+            "sortable": true,
+            "facetable": false
+        },
+        {
+            "name": "content",
+            "type": "Edm.String",
+            "searchable": true,
+            "filterable": false,
+            "sortable": false,
+            "facetable": false,
+            "analyzer": "ja.lucene"
+        },
+        {
+            "name": "title",
+            "type": "Edm.String",
+            "searchable": true,
+            "filterable": false,
+            "sortable": false,
+            "facetable": false,
+            "analyzer": "ja.lucene"
+        },
+        {
+            "name": "summary",
+            "type": "Edm.String",
+            "searchable": true,
+            "filterable": false,
+            "sortable": false,
+            "facetable": false,
+            "analyzer": "ja.lucene"
+        },
+        {
+            "name": "keywords",
+            "type": "Collection(Edm.String)",
+            "searchable": true,
+            "filterable": true,
+            "sortable": false,
+            "facetable": true,
+            "analyzer": "ja.lucene"
+        },
+        {
+            "name": "contentVector",
+            "type": "Collection(Edm.Single)",
+            "searchable": true,
+            "dimensions": 3072,
+            "vectorSearchProfile": "vectorProfile"
+        }
+    ],
+    "semantic": {
+        "defaultConfiguration": "semanticConfig",
+        "configurations": [
+            {
+                "name": "semanticConfig",
+                "prioritizedFields": {
+                    "titleField": {
+                        "fieldName": "title"
+                    },
+                    "prioritizedContentFields": [
+                        {
+                            "fieldName": "content"
+                        }
+                    ],
+                    "prioritizedKeywordsFields": [
+                        {
+                            "fieldName": "keywords"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "vectorSearch": {
+        "algorithms": [
+            {
+                "name": "hnsw",
+                "kind": "hnsw",
+                "hnswParameters": {
+                    "m": 4,
+                    "efConstruction": 400,
+                    "efSearch": 500,
+                    "metric": "cosine"
+                }
+            }
+        ],
+        "profiles": [
+            {
+                "name": "vectorProfile",
+                "algorithm": "hnsw"
+            }
+        ]
+    },
+    "corsOptions": {
+        "allowedOrigins": [
+            "*"
+        ],
+        "maxAgeInSeconds": 300
+    },
+    "similarity": {
+        "@odata.type": "#Microsoft.Azure.Search.BM25Similarity",
+        "k1": 1.2,
+        "b": 0.75
+    }
+}
